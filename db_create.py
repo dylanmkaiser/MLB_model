@@ -1,7 +1,9 @@
 import os
 from dotenv import load_dotenv
 load_dotenv()
-import mysql.connector
+# import mysql.connector
+import pymysql.cursors
+
 import requests
 
 #Connect to MySql and Create DB if it doesn't exist
@@ -12,27 +14,19 @@ from results import results_extractor
 
 db=os.getenv("DATABASE_NAME")
 
-
-try:
-    mydb = mysql.connector.connect(
+mydb = pymysql.connect(
     host=os.getenv("DATABASE_HOST"),
     user=os.getenv("DATABASE_USERNAME"),
     passwd=os.getenv("DATABASE_PASSWORD"),
-    )
+)
+
+try:
     mycursor = mydb.cursor()
     mycursor.execute(f"CREATE DATABASE {db}")
     print('Database Created')
 except:
     print("Database Already Exists")
 
-mydb = mysql.connector.connect(
-  host=os.getenv("DATABASE_HOST"),
-  user=os.getenv("DATABASE_USERNAME"),
-  passwd=os.getenv("DATABASE_PASSWORD"),
-  database=db
-)
-
-mycursor = mydb.cursor()
 #=========================================
 # DROP TABLES
 #=========================================
