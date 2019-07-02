@@ -1,6 +1,11 @@
 import pandas as pd
 from bs4 import BeautifulSoup
 import requests
+import datetime
+import flask
+from flask import jsonify
+import csv
+ 
 
 #Function that calculates win % or returns 50% if no record
 def split_record(record_string):
@@ -12,11 +17,6 @@ def split_record(record_string):
 
 
 def preview_ext(url,home_abv,year,month,day,gno):
-
-
-
- 
-
 
     #Scrape Pandas Tables
     tables=pd.read_html(url)
@@ -32,7 +32,6 @@ def preview_ext(url,home_abv,year,month,day,gno):
     #Scrape Soup
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
-
 
 
     #Ugly Away Pitcher Data
@@ -166,33 +165,69 @@ def preview_ext(url,home_abv,year,month,day,gno):
         matchup_count=0
         home_matchup_record=.5
 
-    preview_data=(home_name,away_name,game_no,away_pitcher_record,away_pitcher_era,away_pitcher_ip,
+    preview_data= home_name,away_name,game_no,away_pitcher_record,away_pitcher_era,away_pitcher_ip,
     home_pitcher_record,home_pitcher_era,home_pitcher_ip,
     away_record,away_last_ten,away_venue_record,away_pitcher_type_record,
     home_record,home_last_ten,home_venue_record,home_pitcher_type_record,
     away_ops_vs_pitcher_type,home_ops_vs_pitcher_type,
-    matchup_count,home_matchup_record)
+    matchup_count,home_matchup_record
 
-    print (preview_data)
+    print(preview_data)
+    with open('results.csv', 'w') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        for row in preview_data.items():
+            csvwriter.writerow(row)
+#   return preview_data 
 
+# def make_df(preview_data):
+#     preview_df = pd.DataFrame(preview_data)
+    # for game in preview_data:   
+    #     today_games =+ {game.preview_data}
+    #     return today_games
+    # preview_data >> results.csv
+    # json_data = jsonify(preview_data)
 
+    # print(json_data)
 
+    # import csv
 
+columns = ["home_name","away_name","game_no","away_pitcher_record","away_pitcher_era","away_pitcher_ip",
+"home_pitcher_record","home_pitcher_era","home_pitcher_ip",
+"away_record","away_last_ten","away_venue_record","away_pitcher_type_record",
+"home_record","home_last_ten","home_venue_record","home_pitcher_type_record",
+"away_ops_vs_pitcher_type","home_ops_vs_pitcher_type",
+"matchup_count","home_matchup_record"]  
+
+    # with open('results.csv', 'a') as csv_file:  
+    #     csv_writer = csv.writer(csv_file, delimiter=',')
+    #     csv_writer.writerow(columns)
+    #     csv_writer.writerow(preview_data)
 
 teams=['ATL','ARI','BAL','BOS','CHN','CHA','CIN','CLE','COL','DET','HOU','KCA','ANA','LAN','MIA','MIL','MIN','NYN','NYA','OAK','PHI','PIT','SDN','SFN','SEA','SLN','TBA','TEX','TOR','WAS']
 days=['30']
 months=['06']
 years=['2019']
 
+# getting current date and time
+d = datetime.datetime.today()
 
 for t in teams:
     try:
         home_abv=t
-        year='2019'
-        month='06'
-        day='30'
+        day=['01']
+        month=['07']
+        year=['2019']  
+        # month=f'{d.month}'
+        # year= f'{d.year}'
+        # month=f'{d.month}'
+        # day=f'{d.day}'
         gno='0'
         url=f'https://www.baseball-reference.com/previews/{year}/{home_abv}{year}{month}{day}{gno}.shtml'
         df = preview_ext(url,home_abv,year,month,day,gno)
+        with open(f'results_{t}.csv', 'w') as csv_file:  
+            csv_writer = csv.writer(csv_file, delimiter=',')
+            csv_writer.writerow(columns)
+            csv_writer.writerow(preview_data)
+     
     except:
         pass
