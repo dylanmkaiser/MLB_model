@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> ramon
 # MLB Model
 
 Our Machine Learning MLB model will predict the winner of today's MLB games. We were able to do this given preview data from baseball-reference.com and results data from retrosheet.org. Below is an outline of the steps to follow to reproduce our project, starting with web scraping, then building an accurate machine learning model, and finally creating a website that will visualize the work that we did as well as showing the winner of today's MLB games.
