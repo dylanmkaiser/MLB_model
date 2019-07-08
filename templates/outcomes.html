@@ -13,62 +13,39 @@
 </head>
 
 <body>
-
+    
     <div class="row">
-            <div class="col-md-12">            
+        <div class="col-md-12">
         </div>
-    </div>
-
-    <div id="showAll">
-        <input name="showAllButton" type="button" value="Show All" onclick="showAll()" />
-    </div>
-    <div id="clearAll">
-        <input name="clearAllButton" type="button" value="Clear All" onclick="clearAll()" />
     </div>
 
     <div class="container">
         <div class="jumbotron">
             <h1>Game Predictions</h1>
-            <h2> July 1, 2019</h2>
+            <h4>
+                <script> document.write(new Date().toLocaleDateString()); </script>
+                </p>
+            </h4>
         </div>
-            <div class="row">
-        <div class="col-md-12">
 
-        </div>
-    </div>
-        <!-- load the d3.js library -->
-        <!-- <section class="dropdown">
-            <div class="row">
-                <div class="col-md-12">
-                    <select id="inds">
-                        <option value="Angels" selected="selected">Angels</option>
-                        <option value="Dodgers">Dodgers</option>
-                        <option value="Brewers">Brewers</option>
-                    </select>
-                </div>
-            </div> -->
-            <div id= "#myTable" class="row">
-                <div class="col-md-12">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Home Team</th>
-                                <th>Away Team</th>
-                                <th>Prediction</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
+        <div id="#myTable" class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Home Team</th>
+                            <th>Away Team</th>
+                            <th>Predicted Winner</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
-
-            <div class="row">
-                    <div class="col-md-12">
-                        <src embed='https://www.mlb.com/live-stream-games/?&affiliateId=MEGAMENU' style="width:500px; height: 300px;">
-                    </div>
-                </div>
+        </div>
+    
     </div>
-    <script src="static/js/gamePrediction.js"></script>
+    </div>
+    <script src="static/js/gamePredictions.js"></script>
     <script src="http://d3js.org/d3.v4.min.js"></script>
 
 
