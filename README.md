@@ -24,4 +24,24 @@ XX) Go to https://www.retrosheet.org/gamelogs/. From here, download the "2010-20
     b. Run the ml_logistic_regression_save_model.ipynb file to save the best performing model, Logistic Regression, using Pickle.
     c. Run the ml_logistic_regression_import_saved_model.ipynb file to confirm that the model was saved correctly. We import the finalized_model.sav file using Pickle again.
 
-# Website Development - Ramon
+# Deploying Flask App with Game Predictions - Ramon
+
+1) Open Jupyter notebook:
+    a. Run the predictions.ipynb file to scrape a preview of today's MLB games from https://www.baseball-reference.com/previews/index.shtml that will feed into a trained machine learning model and output predictions to a csv file in "static/js/display_data.csv".
+    
+2) Launch Flask App 
+   a. In the Terminal, type "app.py" to launch Flask app. Open http://0.0.0.0:5000/ in your web browser. 
+   b. If you move/delete folders from the directories, update the 'index.html' file in the templates folder. 
+   
+   Directory Example
+   app.py
+   static
+        /css
+        /fonts
+        /images
+        /js
+   templates
+        /index.html
+        /subscribe.html
+        /outcomes.html
+        /accuracy.html
