@@ -16,7 +16,8 @@ def preview_extractor(url,home_abv,year,month,day,gno):
 
     preview_id=f'{home_abv}{year}{month}{day}{gno}'
 
- 
+    home_name=tables[1][1][0].split('2019 ')[1]
+    away_name=tables[0][1][0].split('2019 ')[1]
 
 
     #Scrape Pandas Tables
