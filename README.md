@@ -33,8 +33,7 @@ Open Jupyter notebook:
 
 # Deploying Flask App with Game Predictions 
 
-1) Open Jupyter notebook:
-    a. Run the predictions.ipynb file to scrape a preview of today's MLB games from https://www.baseball-reference.com/previews/index.shtml that will feed into a trained machine learning model and output predictions to a csv file in "static/js/display_data.csv".
+1) Run the predictions.py file to scrape a preview of today's MLB games from https://www.baseball-reference.com/previews/index.shtml that will feed into a trained machine learning model and output predictions to a csv file in "static/js/display_data.csv".
     
 2) Launch Flask App 
    a. In the Terminal, type "app.py" to launch Flask app. Open http://0.0.0.0:5000/ in your web browser. 
