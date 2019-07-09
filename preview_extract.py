@@ -16,8 +16,6 @@ def preview_extractor(url,home_abv,year,month,day,gno):
 
     preview_id=f'{home_abv}{year}{month}{day}{gno}'
 
-    home_name=tables[1][1][0].split('2019 ')[1]
-    away_name=tables[0][1][0].split('2019 ')[1]
 
 
     #Scrape Pandas Tables
@@ -178,13 +176,13 @@ def preview_extractor(url,home_abv,year,month,day,gno):
 
 
 
-# home_abv='NYA'
-# day='14'
-# month='04'
-# year='2017'
-# gno='0'
+home_abv='ATL'
+day='16'
+month='05'
+year='2018'
+gno='0'
 
-# url=f'https://www.baseball-reference.com/previews/{year}/{home_abv}{year}{month}{day}{gno}.shtml'
-# preview_extractor(url,home_abv,year,month,day,gno)
+url=f'https://www.baseball-reference.com/previews/{year}/{home_abv}{year}{month}{day}{gno}.shtml'
+preview_extractor(url,home_abv,year,month,day,gno)
 
 
